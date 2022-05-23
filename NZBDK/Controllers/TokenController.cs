@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿/*using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using NZBDK.Data;
@@ -63,8 +63,9 @@ namespace NZBDK.Controllers
 
         private async Task<User> GetUser(string Name, string Password)
         {
-            /*return await _context.User.FirstOrDefaultAsync(u => u.Name == Name && u.Password == Password);*/
+            *//*return await _context.User.FirstOrDefaultAsync(u => u.Name == Name && u.Password == Password);*//*
             return new User { Name = Name, Password = Password };
         }
     }
 }
+*/

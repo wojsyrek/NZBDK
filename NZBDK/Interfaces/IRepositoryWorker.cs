@@ -7,6 +7,8 @@ namespace NZBDK.Interfaces
         IFieldRepository FieldRepository { get; }
         ISygnatureRepository SygnatureRepository { get; }
         IVariantRepository VariantRepository { get; }
-        IRepository<Segment> SegmentRepository { get; }
+        ILoginRepository LoginRepository { get; }
+        IClauseRepository ClauseRepository { get; }
+        ISegmentRepository SegmentRepository { get; }
     }
 }

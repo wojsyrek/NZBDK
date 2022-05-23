@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NZBDK.Data;
 
@@ -10,9 +11,10 @@ using NZBDK.Data;
 namespace NZBDK.Migrations
 {
     [DbContext(typeof(NzbdkDBContext))]
-    partial class NzbdkDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220523214640_AddingLoginAndClause2")]
+    partial class AddingLoginAndClause2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

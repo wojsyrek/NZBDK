@@ -5,7 +5,7 @@ using NZBDK.Models;
 
 namespace NZBDK.Repositories
 {
-    public class SegmentRepository : IRepository<Segment>
+    public class SegmentRepository : ISegmentRepository
     {
         private readonly NzbdkDBContext _context;
 

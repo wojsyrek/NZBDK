@@ -13,10 +13,39 @@ namespace NZBDK.Repositories
         }
 
         IFieldRepository? fieldRepository = null;
-        IRepository<Segment>? segmentRepository = null;
         ISygnatureRepository? sygnatureRepository = null;
         IVariantRepository? variantRepository = null;
+        ILoginRepository? loginRepository = null;
+        IClauseRepository? clauseRepository = null;
+        ISegmentRepository? segmentRepository = null;
 
+        public ISegmentRepository SegmentRepository
+        {
+            get
+            {
+                if (segmentRepository == null)
+                    segmentRepository = new SegmentRepository(_context);
+                return segmentRepository;
+            }
+        }
+        public ILoginRepository LoginRepository
+        {
+            get 
+            {
+                if (loginRepository == null)
+                    loginRepository = new LoginRepository(_context);
+                return loginRepository; 
+            }
+        }
+        public IClauseRepository ClauseRepository
+        {
+            get
+            {
+                if (clauseRepository == null)
+                    clauseRepository = new ClauseRepository(_context);
+                return clauseRepository;
+            }
+        }
         public IFieldRepository FieldRepository
         {
             get
@@ -24,15 +53,6 @@ namespace NZBDK.Repositories
                 if (fieldRepository == null)
                     fieldRepository = new FieldRepository(_context);
                 return fieldRepository;
-            }
-        }
-        public IRepository<Segment> SegmentRepository
-        {
-            get
-            {
-                if (segmentRepository == null)
-                    segmentRepository = new SegmentRepository(_context);
-                return segmentRepository;
             }
         }
         public ISygnatureRepository SygnatureRepository

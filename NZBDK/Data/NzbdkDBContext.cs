@@ -18,6 +18,8 @@ namespace NZBDK.Data
         public virtual DbSet<Sygnature> Sygnatures { get; set; } = null!;
         public virtual DbSet<Variant> Variants { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
+        public virtual DbSet<Clause> Clauses { get; set; } = null!;
+        public virtual DbSet<Login> Logins { get; set; } = null!;
 
     }
 }
