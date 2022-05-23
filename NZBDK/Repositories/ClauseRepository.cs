@@ -1,4 +1,5 @@
-﻿using NZBDK.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using NZBDK.Data;
 using NZBDK.Interfaces;
 using NZBDK.Models;
 
@@ -13,34 +14,36 @@ namespace NZBDK.Repositories
             _context = context;
         }
 
-        public Task<IEnumerable<Field>> GetSpecific(string name)
+        public async Task Add(Clause entity)
         {
-            throw new NotImplementedException();
+            await _context.Clauses.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<Clause> GetSpecific(string name)
+        {
+            return await _context.Clauses.FirstOrDefaultAsync(o => o.Name == name);
         }
 
-        public Task Add(Clause entity)
+        public async Task Delete(Clause entity)
         {
-            throw new NotImplementedException();
+            _context.Clauses.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task Delete(Clause entity)
+        public async Task Update(Clause entity)
         {
-            throw new NotImplementedException();
+            _context.Clauses.Update(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task Update(Clause entity)
+        public async Task<Clause> GetSingle(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Clauses.FirstOrDefaultAsync(o => o.Id == id);
         }
 
-        Task<Clause> IRepository<Clause>.GetSingle(int id)
+        public async Task<IEnumerable<Clause>> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        Task<IEnumerable<Clause>> IRepository<Clause>.GetAll()
-        {
-            throw new NotImplementedException();
+            return await _context.Clauses.ToListAsync<Clause>();
         }
     }
 }

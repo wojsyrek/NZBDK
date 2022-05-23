@@ -34,7 +34,7 @@ namespace NZBDK.Repositories
         {
             return await _context.Segments.ToListAsync<Segment>();
         }
-        public async Task<Segment?> GetSingle(int id)
+        public async Task<Segment> GetSingle(int id)
         {
             return await _context.Segments.SingleOrDefaultAsync(x => x.Id == id);
         }

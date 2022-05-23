@@ -35,7 +35,7 @@ namespace NZBDK.Repositories
         {
             return await _context.Variants.ToListAsync();
         }
-        public async Task<Variant?> GetSingle(int id)
+        public async Task<Variant> GetSingle(int id)
         {
             return await _context.Variants.SingleOrDefaultAsync(x => x.Id == id);
         }

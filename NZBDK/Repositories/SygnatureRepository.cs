@@ -38,7 +38,7 @@ namespace NZBDK.Repositories
         {
             return await _context.Sygnatures.ToListAsync<Sygnature>();
         }
-        public async Task<Sygnature?> GetSingle(int id)
+        public async Task<Sygnature> GetSingle(int id)
         {
             return await _context.Sygnatures.SingleOrDefaultAsync(x => x.Id == id);
         }

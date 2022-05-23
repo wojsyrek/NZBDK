@@ -33,12 +33,12 @@ namespace NZBDK.Repositories
         {
             return await _context.Fields.Where(o => o.Variant_Id == variant.Id).ToListAsync<Field>();
         }
-            public async Task<IEnumerable<Field>> GetAll()
+        public async Task<IEnumerable<Field>> GetAll()
         {
             return await _context.Fields.ToListAsync();
         }
-        public async Task<Field?> GetSingle(int id) 
-        { 
+        public async Task<Field> GetSingle(int id)
+        {
             return await _context.Fields.SingleOrDefaultAsync(f => f.Id == id);
         }
     }

@@ -1,4 +1,5 @@
-﻿using NZBDK.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using NZBDK.Data;
 using NZBDK.Interfaces;
 using NZBDK.Models;
 
@@ -13,33 +14,36 @@ namespace NZBDK.Repositories
             _context = context;
         }
 
-        public Task Add(Login entity)
+        public async Task Add(Login entity)
         {
-            throw new NotImplementedException();
+            await _context.Logins.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
-        public Task<IEnumerable<Field>> GetSpecific(string name)
+        public async Task<Login> GetSpecific(string name)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Delete(Login entity)
-        {
-            throw new NotImplementedException();
+            return await _context.Logins.FirstOrDefaultAsync(o => o.Name == name);
         }
 
-        public Task Update(Login entity)
+        public async Task Delete(Login entity)
         {
-            throw new NotImplementedException();
+            _context.Logins.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        Task<Login> IRepository<Login>.GetSingle(int id)
+        public async Task Update(Login entity)
         {
-            throw new NotImplementedException();
+           _context.Logins.Update(entity);
+           await _context.SaveChangesAsync();
         }
 
-        Task<IEnumerable<Login>> IRepository<Login>.GetAll()
+        public async Task<Login> GetSingle(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Logins.FirstOrDefaultAsync(o => o.Id == id);
+        }
+
+        public async Task<IEnumerable<Login>> GetAll()
+        {
+            return await _context.Logins.ToListAsync<Login>();
         }
     }
 }
