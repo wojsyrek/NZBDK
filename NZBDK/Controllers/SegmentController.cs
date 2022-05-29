@@ -19,18 +19,21 @@ namespace NZBDK.Controllers
         {
             return Ok(await _repositoryWorker.SegmentRepository.GetAll());
         }
+        [Helpers.Authorize]
         [HttpPost("Add")]
         public async Task<IActionResult> Add(Segment entity)
         {
             await _repositoryWorker.SegmentRepository.Add(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Segment entity)
         {
             await _repositoryWorker.SegmentRepository.Delete(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpPut("Update")]
         public async Task <IActionResult> Update(Segment entity)
         {

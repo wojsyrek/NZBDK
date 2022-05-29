@@ -14,18 +14,21 @@ namespace NZBDK.Controllers
         {
             _repositoryWorker = repositoryWorker;
         }
+        [Helpers.Authorize]
         [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody]Field entity)
         {
             await _repositoryWorker.FieldRepository.Add(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Field entity)
         {
             await _repositoryWorker.FieldRepository.Delete(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpPut("Update")]
         public async Task<IActionResult> Update(Field entity)
         {

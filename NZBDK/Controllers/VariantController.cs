@@ -14,6 +14,7 @@ namespace NZBDK.Controllers
         {
             _repositoryWorker = repositoryWorker;
         }
+        [Helpers.Authorize]
         [HttpPost("Add")]
         public async Task<IActionResult> Add(Variant entity)
         {
@@ -25,12 +26,14 @@ namespace NZBDK.Controllers
         {
             return Ok(await _repositoryWorker.VariantRepository.GetSpecific(entity));
         }
+        [Helpers.Authorize]
         [HttpPut("Update")]
         public async Task<IActionResult> Update(Variant entity)
         {
             await _repositoryWorker.VariantRepository.Update(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Variant variant)
         {

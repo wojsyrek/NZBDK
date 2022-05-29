@@ -19,18 +19,21 @@ namespace NZBDK.Controllers
         {
             return Ok(await _repositoryWorker.SygnatureRepository.GetSpecific(entity));
         }
+        [Helpers.Authorize]
         [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody]Sygnature entity)
         {
             await _repositoryWorker.SygnatureRepository.Add(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Sygnature entity)
         {
             await _repositoryWorker.SygnatureRepository.Delete(entity);
             return Ok();
         }
+        [Helpers.Authorize]
         [HttpPut("Update")]
         public async Task<IActionResult> Update(Sygnature sygnature)
         {
